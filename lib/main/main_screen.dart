@@ -9,10 +9,10 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   @override
-  Widget build(BuildContext context) {S
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('비만도 계산기'),
+        title: Text('비만도 계산기11')
       ),
     );
   }
