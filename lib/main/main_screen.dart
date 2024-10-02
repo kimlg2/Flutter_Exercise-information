@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bmi_flutter/result/result_screen.dart';  // 실제 파일 경로에 맞게 수정
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -52,8 +53,18 @@ class _MainScreenState extends State<MainScreen> {
             ElevatedButton(
               onPressed: () {
                 if(_formKey.currentState?.validate() ?? false) {
-
+                  return;
                 }
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultScreen(
+                      height: 168.0, // 실수로 변경
+                      weight: 60.0,  // 실수로 변경
+                    ),
+                  ),
+                );
               },
               child: Text('결과'),
             ),
