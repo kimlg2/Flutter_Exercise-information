@@ -11,6 +11,7 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String result = '정상';
     return Scaffold(
       appBar: AppBar(
         title: const Text('결과'),
@@ -18,10 +19,11 @@ class ResultScreen extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const[
-            Text('정상', style: TextStyle(fontSize: 36),
+          children: [
+            Text(result,
+              style: const TextStyle(fontSize: 36),
             ),
-            Icon(Icons.sentiment_satisfied,
+            const Icon(Icons.sentiment_satisfied,
               color: Colors.blue,
             size: 100,
             ),
