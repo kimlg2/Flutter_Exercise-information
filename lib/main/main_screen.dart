@@ -49,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI 계산'),
+        title: Text('BMI 계산기'),
       ),
       body: Container(
         decoration: BoxDecoration(
