@@ -23,8 +23,8 @@ class _MainScreenState extends State<MainScreen> {
   }
   Future save() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble('height', 1.5);
-    await prefs.setDouble('weight', 1.5);
+    await prefs.setDouble('height', double.parse(_heightController.text));
+    await prefs.setDouble('weight', double.parse(_weightController.text));
   }
   @override
   Widget build(BuildContext context) {
@@ -48,8 +48,7 @@ class _MainScreenState extends State<MainScreen> {
               validator: (value) {
                 if(value == null || value.isEmpty) {
                   return '키를 입력해주세요!';
-                }
-                return null;
+                }return null;
               },
             ),
             SizedBox(height: 8),
