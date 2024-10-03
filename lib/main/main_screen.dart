@@ -10,11 +10,21 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _heightController = TextEditingController();
+  final _weightController = TextEditingController();
+
+  @override
+  void dispose() {
+    _heightController.dispose();
+    _weightController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('비만도 계산')
+        title: Text('BMI 계산')
       ),
       body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -23,6 +33,7 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           children: [
             TextFormField(
+              controller: _heightController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: '키'
@@ -37,6 +48,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
             SizedBox(height: 8),
             TextFormField(
+            controller: _weightController,
             decoration: InputDecoration(
             border: OutlineInputBorder(),
             hintText: '몸무게'
@@ -52,7 +64,7 @@ class _MainScreenState extends State<MainScreen> {
            const SizedBox(height: 8),
             ElevatedButton(
               onPressed: () {
-                if(_formKey.currentState?.validate() ?? false) {
+                if(_formKey.currentState?.validate()== false ) {
                   return;
                 }
 
@@ -60,8 +72,8 @@ class _MainScreenState extends State<MainScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => ResultScreen(
-                      height: 168.0, // 실수로 변경
-                      weight: 60.0,  // 실수로 변경
+                      height: double.parse(_heightController.text), // 실수로 변경
+                      weight: double.parse(_weightController.text),  // 실수로 변경
                     ),
                   ),
                 );
