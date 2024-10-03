@@ -26,6 +26,7 @@ class _MainScreenState extends State<MainScreen> {
     await prefs.setDouble('height', double.parse(_heightController.text));
     await prefs.setDouble('weight', double.parse(_weightController.text));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
