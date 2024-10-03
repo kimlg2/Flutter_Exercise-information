@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:bmi_flutter/result/result_screen.dart';  // 실제 파일 경로에 맞게 수정
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -15,11 +16,16 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void dispose() {
+    save();
     _heightController.dispose();
     _weightController.dispose();
     super.dispose();
   }
-
+  Future save() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('height', 1.5);
+    await prefs.setDouble('weight', 1.5);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +70,7 @@ class _MainScreenState extends State<MainScreen> {
            const SizedBox(height: 8),
             ElevatedButton(
               onPressed: () {
-                if(_formKey.currentState?.validate()== false ) {
+                if(_formKey.currentState?.validate() == false ) {
                   return;
                 }
 
